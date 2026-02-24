@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=RPM Policy Checker
+Comment=Validate RPM packages against Fedora packaging guidelines
+Exec=rpm-policy-checker
+Icon=se.danielnylander.rpm-policy-checker
+Terminal=false
+Type=Application
+Categories=Development;System;
+Keywords=RPM;Fedora;Policy;Lint;Package;
+StartupNotify=true
+MimeType=application/x-rpm;

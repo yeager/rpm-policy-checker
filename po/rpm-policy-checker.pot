@@ -1,0 +1,487 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR Daniel Nylander
+# This file is distributed under the same license as the rpm-policy-checker package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: rpm-policy-checker 0.1.0\n"
+"Report-Msgid-Bugs-To: daniel@danielnylander.se\n"
+"POT-Creation-Date: 2026-02-24 09:08+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/rpm_policy_checker/main.py:37
+msgid "Package Naming"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:38
+msgid "Spec File Quality"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:39
+msgid "Dependencies"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:40
+msgid "File Placement"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:41
+msgid "Licensing (SPDX)"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:42
+msgid "Scriptlets"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:43
+msgid "Macro Usage"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:44
+msgid "Changelog Format"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:45
+msgid "rpmlint Results"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:46 src/rpm_policy_checker/main.py:956
+msgid "General"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:55
+msgid "Error"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:56
+msgid "Warning"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:57
+msgid "Info"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:58
+msgid "Note"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:59
+msgid "Pedantic"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:115
+msgid "rpmlint is not installed."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:117
+msgid "Install with: sudo dnf install rpmlint"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:174
+#, python-format
+msgid "Package name '%s' contains uppercase letters."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:176
+msgid "Fedora guidelines recommend lowercase package names."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:183
+msgid "Package name contains spaces."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:185
+msgid "Remove spaces from the package name."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:197
+#, python-format
+msgid "Release field does not contain %%{?dist}."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:199
+#, python-format
+msgid "Add %%{?dist} to the Release tag for proper distribution tagging."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:209
+msgid "Summary should not end with a period."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:211
+msgid "Remove the trailing period from the Summary."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:218
+msgid "Summary exceeds 80 characters."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:220
+msgid "Keep the Summary concise (under 80 characters)."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:249
+#, python-format
+msgid "Required field '%s' is missing from spec file."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:251
+#, python-format
+msgid "Add the %s tag to the spec file header."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:259
+msgid "URL field is missing."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:261
+msgid "Add a URL pointing to the project's homepage."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:269
+msgid "No Source tag found."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:271
+msgid "Add a Source0 tag with the upstream tarball URL."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:279
+#, python-format
+msgid "%%description section is missing."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:281
+#, python-format
+msgid "Add a %%description section with a detailed package description."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:289
+#, python-format
+msgid "%%changelog section is missing."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:291
+#, python-format
+msgid "Add a %%changelog section with dated entries."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:300
+msgid "BuildRoot tag is deprecated in modern RPM."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:302
+msgid "Remove the BuildRoot tag; RPM sets it automatically."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:310
+#, python-format
+msgid "%%clean section is deprecated in modern RPM."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:312
+#, python-format
+msgid "Remove the %%clean section; rpmbuild handles cleanup automatically."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:339
+#, python-format
+msgid "License '%s' uses old Fedora format, not SPDX."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:341
+msgid "Fedora 40+ requires SPDX license identifiers. Convert to SPDX format."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:348
+#, python-format
+msgid "License identifier '%s' is not a recognized SPDX identifier."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:350
+msgid "Check https://spdx.org/licenses/ for valid SPDX identifiers."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:362
+#, python-format, python-brace-format
+msgid "Line %d: Hardcoded /usr/lib/ instead of %%{_libdir}."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:364
+#, python-format, python-brace-format
+msgid "Use %%{_libdir} macro instead of hardcoded library path."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:371
+#, python-format, python-brace-format
+msgid "Line %d: Hardcoded /usr/bin/ instead of %%{_bindir}."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:373
+#, python-format, python-brace-format
+msgid "Use %%{_bindir} macro instead of hardcoded path."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:380
+#, python-format, python-brace-format
+msgid "Line %d: Hardcoded /usr/share/ instead of %%{_datadir}."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:382
+#, python-format, python-brace-format
+msgid "Use %%{_datadir} macro for portability."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:389
+#, python-format, python-brace-format
+msgid "Line %d: Hardcoded /etc/ instead of %%{_sysconfdir}."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:391
+#, python-format, python-brace-format
+msgid "Use %%{_sysconfdir} macro for portability."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:409
+#, python-format
+msgid "Line %d: Dangerous rm -rf in scriptlet."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:411
+msgid "Avoid destructive rm commands in scriptlets."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:418
+#, python-format
+msgid "Line %d: 'exit' in scriptlet may cause transaction failure."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:420
+msgid ""
+"Use 'exit 0' or remove exit calls; scriptlet failures can block RPM "
+"transactions."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:438
+#, python-format
+msgid "Line %d: Changelog entry does not follow standard format."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:440
+msgid "Use format: * Day Mon DD YYYY Name <email> - version-release"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:460
+msgid "Failed to query RPM package."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:462
+msgid "Ensure the file is a valid RPM package."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:476
+msgid "RPM package has no URL set."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:478
+msgid "Add a URL tag to the spec file."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:494
+#, python-format
+msgid "File installed in /usr/local/: %s"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:496
+msgid "RPM packages must not install files under /usr/local/."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:505
+#, python-format
+msgid "File installed in temporary directory: %s"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:507
+msgid "Do not install files under /tmp/ or /var/tmp/."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:525
+#, python-format
+msgid "File-based dependency: %s"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:527
+msgid ""
+"Consider using package-based dependencies instead of file paths where "
+"possible."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:535
+msgid "rpm command not found."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:537
+msgid "Install the rpm package to analyze RPM files."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:576 src/rpm_policy_checker/main.py:585
+msgid "File is not a .rpm or .spec file."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:578 src/rpm_policy_checker/main.py:587
+msgid "Open a .rpm package or .spec file."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:599 src/rpm_policy_checker/main.py:612
+#: src/rpm_policy_checker/main.py:971
+msgid "RPM Policy Checker"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:620
+msgid "Open .rpm or .spec file"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:627 src/rpm_policy_checker/main.py:899
+msgid "Settings"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:628
+msgid "Copy Debug Info"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:629
+msgid "Keyboard Shortcuts"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:630
+msgid "About RPM Policy Checker"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:639
+msgid "No package checked"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:641
+msgid "Open or drag and drop a .rpm or .spec file to check policy compliance."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:648 src/rpm_policy_checker/main.py:814
+msgid "All checks passed!"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:650
+msgid "No policy issues were found. The package looks good! 👍"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:656
+msgid "Checking package…"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:657
+msgid "Running policy checks, please wait."
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:682
+msgid "Ready"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:713
+msgid "Welcome"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:719
+msgid "Welcome to RPM Policy Checker"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:721
+msgid ""
+"Validate RPM packages against Fedora packaging guidelines.\n"
+"\n"
+"✓ Check .rpm and .spec files\n"
+"✓ Fedora Packaging Guidelines compliance\n"
+"✓ SPDX license identifier validation\n"
+"✓ Spec file quality analysis\n"
+"✓ rpmlint integration\n"
+"✓ Fix recommendations for every issue"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:730
+msgid "Get Started"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:753
+msgid "Open RPM or spec file"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:755
+msgid "RPM and spec files"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:762
+msgid "All files"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:785
+#, python-format
+msgid "Checking %s…"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:833
+#, python-format
+msgid "%(count)d issue(s)"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:855
+msgid "💡 Recommendation"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:866
+#, python-format
+msgid "%(total)d issues: %(errors)d errors, %(warnings)d warnings"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:904
+msgid "rpmlint"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:905
+msgid "Show pedantic warnings"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:910
+msgid "Show info messages"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:917
+msgid "Distribution"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:918
+msgid "Target distribution"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:950
+msgid "Debug info copied"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:958
+msgid "Quit"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:959
+msgid "Keyboard shortcuts"
+msgstr ""
+
+#: src/rpm_policy_checker/main.py:979
+msgid ""
+"Validate RPM packages against Fedora packaging guidelines and RPM standards "
+"with clear reports and fix suggestions."
+msgstr ""
