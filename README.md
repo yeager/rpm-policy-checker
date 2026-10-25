@@ -24,19 +24,30 @@ pip install .
 rpm-policy-checker
 ```
 
+The package is also published on PyPI. Install it in an environment that can
+access the host's GTK libraries:
+
+```bash
+pipx install --system-site-packages rpm-policy-checker
+```
+
 ### Dependencies
 
 - Python ≥ 3.10
-- GTK4 and libadwaita
+- GTK 4.10 or newer and libadwaita 1.5 or newer
 - PyGObject
 - rpmlint (optional, for rpmlint integration)
 - rpm (for RPM binary analysis)
 
-On Fedora:
+On Fedora, install the system dependencies first:
 
 ```bash
 sudo dnf install python3-gobject gtk4 libadwaita rpmlint
 ```
+
+The checks target Fedora packaging policy. Other RPM distributions can run
+the generic RPM and `rpmlint` checks, but do not have a separate policy profile
+in this version.
 
 ## Usage
 

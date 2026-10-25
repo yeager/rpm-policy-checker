@@ -5,7 +5,6 @@ gi.require_version("Adw", "1")
 from gi.repository import Gtk, Adw, Gdk, Gio, GLib, Pango
 
 import gettext
-import locale
 import os
 import sys
 import json
@@ -16,11 +15,11 @@ import re
 import tempfile
 import shutil
 from rpm_policy_checker.accessibility import AccessibilityManager
+from rpm_policy_checker.spdx_validation import validate_spdx_expression
 
 LOCALE_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "po")
 if not os.path.isdir(LOCALE_DIR):
     LOCALE_DIR = "/usr/share/locale"
-locale.bindtextdomain("rpm-policy-checker", LOCALE_DIR)
 gettext.bindtextdomain("rpm-policy-checker", LOCALE_DIR)
 gettext.textdomain("rpm-policy-checker")
 _ = gettext.gettext
@@ -64,7 +63,7 @@ def _load_settings():
     if os.path.exists(SETTINGS_FILE):
         with open(SETTINGS_FILE) as f:
             return json.load(f)
-    return {"welcome_shown": False, "show_pedantic": True, "show_info": True, "distribution": "fedora"}
+    return {"welcome_shown": False, "show_pedantic": True, "show_info": True}
 
 
 def _save_settings(s):
@@ -314,41 +313,30 @@ def _check_spec_file(spec_path):
 
     # License check (SPDX)
     if license_value:
-        spdx_identifiers = {
-            "MIT", "Apache-2.0", "GPL-2.0-only", "GPL-2.0-or-later",
-            "GPL-3.0-only", "GPL-3.0-or-later", "LGPL-2.1-only",
-            "LGPL-2.1-or-later", "LGPL-3.0-only", "LGPL-3.0-or-later",
-            "BSD-2-Clause", "BSD-3-Clause", "MPL-2.0", "ISC", "Zlib",
-            "Unlicense", "CC0-1.0", "AGPL-3.0-only", "AGPL-3.0-or-later",
-            "Artistic-2.0", "BSL-1.0", "CC-BY-4.0", "CC-BY-SA-4.0",
-            "EPL-2.0", "EUPL-1.2", "WTFPL", "0BSD",
-        }
-        old_fedora_licenses = {
-            "GPLv2", "GPLv2+", "GPLv3", "GPLv3+", "LGPLv2", "LGPLv2+",
-            "LGPLv3", "LGPLv3+", "ASL 2.0", "BSD", "MIT",
-        }
-        # Check each license in expression (handle AND/OR)
-        license_parts = re.split(r'\s+(?:AND|OR|and|or)\s+', license_value)
-        for part in license_parts:
-            part = part.strip().strip("()")
-            if part in old_fedora_licenses and part not in spdx_identifiers:
-                results.append({
-                    "category": "licensing",
-                    "severity": "W",
-                    "tag": "old-license-identifier",
-                    "detail": _("License '%s' uses old Fedora format, not SPDX.") % part,
-                    "package": "",
-                    "recommendation": _("Fedora 40+ requires SPDX license identifiers. Convert to SPDX format."),
-                })
-            elif part not in spdx_identifiers and part not in old_fedora_licenses:
-                results.append({
-                    "category": "licensing",
-                    "severity": "I",
-                    "tag": "unknown-license-identifier",
-                    "detail": _("License identifier '%s' is not a recognized SPDX identifier.") % part,
-                    "package": "",
-                    "recommendation": _("Check https://spdx.org/licenses/ for valid SPDX identifiers."),
-                })
+        for finding, identifier in validate_spdx_expression(license_value):
+            if finding == "legacy":
+                tag = "old-license-identifier"
+                severity = "W"
+                detail = _("License '%s' uses an old Fedora identifier, not current SPDX syntax.") % identifier
+                recommendation = _("Convert the license identifier to current SPDX syntax.")
+            elif finding == "unknown":
+                tag = "unknown-license-identifier"
+                severity = "I"
+                detail = _("License identifier '%s' is not in the SPDX License List.") % identifier
+                recommendation = _("Check https://spdx.org/licenses/ for valid SPDX identifiers.")
+            else:
+                tag = "invalid-license-expression"
+                severity = "W"
+                detail = _("License value '%s' is not a valid SPDX expression.") % identifier
+                recommendation = _("Use SPDX identifiers with AND, OR, WITH, and parentheses as needed.")
+            results.append({
+                "category": "licensing",
+                "severity": severity,
+                "tag": tag,
+                "detail": detail,
+                "package": "",
+                "recommendation": recommendation,
+            })
 
     # Check for common macro issues
     for i, line in enumerate(lines, 1):
@@ -912,16 +900,6 @@ class RPMPolicyCheckerApp(Adw.Application):
         row2.connect("notify::active", self._on_info_changed)
         group.add(row2)
         page.add(group)
-
-        # Distribution group
-        dist_group = Adw.PreferencesGroup(title=_("Distribution"))
-        dist_row = Adw.ComboRow(title=_("Target distribution"))
-        model = Gtk.StringList.new([
-            "Fedora", "RHEL / CentOS Stream", "openSUSE", "Mageia",
-        ])
-        dist_row.set_model(model)
-        dist_group.add(dist_row)
-        page.add(dist_group)
 
         dialog.add(page)
         dialog.present(self.window)

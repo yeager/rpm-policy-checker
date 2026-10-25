@@ -4,15 +4,21 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rpm-policy-checker"
-version = "0.1.0"
+version = "0.1.1"
 description = "GTK4 RPM Policy Checker — validate packages against Fedora packaging guidelines"
+readme = "README.md"
 requires-python = ">=3.10"
 license = "GPL-3.0-or-later"
 authors = [{name = "Daniel Nylander", email = "daniel@danielnylander.se"}]
-dependencies = ["PyGObject>=3.42"]
+dependencies = ["license-expression>=30,<31"]
 
 [project.scripts]
 rpm-policy-checker = "rpm_policy_checker.main:main"
+
+[project.urls]
+Homepage = "https://github.com/yeager/rpm-policy-checker"
+Repository = "https://github.com/yeager/rpm-policy-checker"
+Issues = "https://github.com/yeager/rpm-policy-checker/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
